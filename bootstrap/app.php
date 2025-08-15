@@ -10,8 +10,13 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
+    ->withProviders([
+        App\Providers\TelescopeServiceProvider::class,
+    ])
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->alias([
+            'setlocale' => \App\Http\Middleware\SetLocale::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

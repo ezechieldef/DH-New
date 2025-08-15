@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'D-HARVEST'),
 
     /*
     |--------------------------------------------------------------------------
@@ -78,9 +78,9 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'en'),
+    'locale' => env('APP_LOCALE', 'fr'),
 
-    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
+    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'fr'),
 
     'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
 
@@ -103,6 +103,20 @@ return [
         ...array_filter(
             explode(',', (string) env('APP_PREVIOUS_KEYS', ''))
         ),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Branding
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify branding information for your application such
+    | as the primary slogan that will be used throughout the application.
+    |
+    */
+
+    'branding' => [
+        'slogan' => 'Des services Premium, notre standard pour vous.',
     ],
 
     /*
