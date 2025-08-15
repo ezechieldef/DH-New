@@ -1,25 +1,26 @@
 @extends('layouts.app')
+
 @section('content')
-<section class="max-w-3xl mx-auto px-6 py-16">
-    <a href="{{ route('blog.index', app()->getLocale()) }}" class="text-sm text-indigo-600 hover:underline">&larr; {{ __('messages.nav.blog') }}</a>
-    <h1 class="text-3xl font-bold mt-4">{{ $post->titre }}</h1>
-    @if($post->publie_at)
-        <p class="mt-2 text-xs text-slate-500">{{ $post->publie_at->format('d/m/Y') }}</p>
-    @endif
-    <article class="prose prose-indigo mt-8 max-w-none">
-        {!! $post->contenu !!}
+<div class="max-w-3xl mx-auto px-4 md:px-0 py-12 md:py-16">
+    <a href="{{ route('blog.index', app()->getLocale()) }}" class="text-sm text-slate-500 hover:text-brand-600 flex items-center gap-1 mb-6">
+        ← {{ __('messages.actions.back') }}
+    </a>
+    <h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">{{ $post['title'] ?? ucfirst($slug ?? 'Article') }}</h1>
+    <div class="text-sm text-slate-500 mb-8 flex items-center gap-4">
+        <span>{{ now()->format('d/m/Y') }}</span>
+        <span>•</span>
+        <span>{{ __('messages.blog.read_time', ['minutes'=>5]) }}</span>
+    </div>
+    <article class="prose prose-slate max-w-none">
+        <p>{{ $post['excerpt'] ?? __('messages.placeholder.lorem_medium') }}</p>
+        <h2>Section 1</h2>
+        <p>{{ __('messages.placeholder.lorem_long') }}</p>
+        <h2>Section 2</h2>
+        <p>{{ __('messages.placeholder.lorem_long') }}</p>
+        <blockquote>
+            <p>{{ __('messages.placeholder.quote') }}</p>
+        </blockquote>
+        <p>{{ __('messages.placeholder.lorem_medium') }}</p>
     </article>
-    @if($related->count())
-        <div class="mt-16">
-            <h2 class="text-xl font-semibold mb-4">Articles liés</h2>
-            <div class="grid md:grid-cols-3 gap-4">
-                @foreach($related as $r)
-                    <a href="{{ route('blog.show', [app()->getLocale(), $r->slug]) }}" class="block text-sm bg-white border rounded-md p-4 hover:shadow">
-                        {{ $r->titre }}
-                    </a>
-                @endforeach
-            </div>
-        </div>
-    @endif
-</section>
+</div>
 @endsection

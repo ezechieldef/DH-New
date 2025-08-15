@@ -1,26 +1,29 @@
 @extends('layouts.app')
+
 @section('content')
-<section class="max-w-3xl mx-auto px-6 py-16">
-    <h1 class="text-3xl font-bold mb-8">Contact</h1>
-    <form method="POST" action="{{ route('contact.store', app()->getLocale()) }}" class="space-y-6 bg-white p-6 rounded-lg shadow-sm">
+<div class="max-w-3xl mx-auto px-4 md:px-0 py-12 md:py-16">
+    <h1 class="text-3xl md:text-4xl font-bold mb-6">{{ __('messages.pages.contact.title') }}</h1>
+
+    <form action="{{ route('contact.store', app()->getLocale()) }}" method="POST" class="space-y-6 bg-white p-6 rounded-xl border shadow-sm">
         @csrf
         <div>
-            <label class="block text-sm font-medium mb-1">Nom *</label>
-            <input name="nom" value="{{ old('nom') }}" required class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-300">
+            <label class="block text-sm font-medium text-slate-700 mb-1">{{ __('messages.forms.name') }}</label>
+            <input name="name" type="text" value="{{ old('name') }}"
+                   class="w-full rounded-md border-slate-300 focus:border-brand-500 focus:ring-brand-500">
         </div>
         <div>
-            <label class="block text-sm font-medium mb-1">Email *</label>
-            <input type="email" name="email" value="{{ old('email') }}" required class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-300">
+            <label class="block text-sm font-medium text-slate-700 mb-1">{{ __('messages.forms.email') }}</label>
+            <input name="email" type="email" value="{{ old('email') }}"
+                   class="w-full rounded-md border-slate-300 focus:border-brand-500 focus:ring-brand-500">
         </div>
         <div>
-            <label class="block text-sm font-medium mb-1">Sujet</label>
-            <input name="sujet" value="{{ old('sujet') }}" class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-300">
+            <label class="block text-sm font-medium text-slate-700 mb-1">{{ __('messages.forms.message') }}</label>
+            <textarea name="message" rows="5"
+                      class="w-full rounded-md border-slate-300 focus:border-brand-500 focus:ring-brand-500">{{ old('message') }}</textarea>
         </div>
-        <div>
-            <label class="block text-sm font-medium mb-1">Message *</label>
-            <textarea name="message" rows="5" required class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-300">{{ old('message') }}</textarea>
-        </div>
-        <button class="px-5 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-500">Envoyer</button>
+        <button class="px-6 py-3 rounded-md bg-brand-600 text-white font-medium hover:bg-brand-500 transition">
+            {{ __('messages.forms.send') }}
+        </button>
     </form>
-</section>
+</div>
 @endsection

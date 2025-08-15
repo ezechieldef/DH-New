@@ -1,18 +1,55 @@
+@import "@tabler/icons-webfont/dist/tabler-icons.min.css";
+@import url('animations.css');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  body {
-    @apply bg-white;
-  }
+/* Custom global tweaks */
+* {
+    font-family: 'Karla', "Poppins", "Roboto", "sans-serif";
 }
 
-@layer components {
-  .btn-primary {
-    @apply inline-flex items-center justify-center rounded-md bg-indigo-600 text-white font-medium px-5 py-3 hover:bg-indigo-500 transition;
-  }
-  .badge {
-    @apply inline-block text-xs font-semibold px-2 py-1 rounded bg-indigo-100 text-indigo-700;
-  }
+body {
+    font-family: 'Karla', "Poppins", "Roboto", "sans-serif";
+    @apply bg-slate-50 text-slate-800;
+}
+
+.prose {
+    @apply max-w-none;
+}
+
+.glass-bg {
+    @apply backdrop-blur-md supports-[backdrop-filter]:bg-white/20 bg-white/10 border-b border-white/40;
+    /* backdrop-blur supports-[backdrop-filter]:bg-white/20 bg-white/10 border-b border-white/40 */
+}
+
+.glass-bg-dark {
+    @apply bg-black/5 backdrop-blur-md border border-white/20 rounded-xl text-white;
+}
+
+
+
+
+#nav-desktop .nav-link {
+    @apply py-1;
+}
+
+#nav-desktop .nav-link.active {
+    @apply bg-green-500 font-bold text-white rounded-full px-4 py-2;
+}
+
+#nav-desktop.bg-dark-mode .nav-link.active {
+    @apply bg-white font-bold text-black rounded-full px-4 py-2;
+}
+
+#nav-desktop.bg-white-mode .nav-link.active {
+    @apply bg-green-500 font-bold text-white rounded-full px-4 py-2;
+}
+
+#nav-desktop .nav-link:first-of-type:not(.active) {
+    @apply ms-4;
+}
+
+#nav-desktop .nav-link:last-of-type:not(.active) {
+    @apply me-4;
 }

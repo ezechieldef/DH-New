@@ -1,75 +1,58 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{
-    HomeController,
-    PageController,
-    ServiceController,
-    ProjectController,
-    BlogController,
-    FaqController,
-    QuoteController,
-    ContactController
-};
-use App\Http\Middleware\SetLocale;
 
-/*
-|--------------------------------------------------------------------------
-| Routes publiques avec gestion de langue
-|--------------------------------------------------------------------------
-| On applique directement le middleware de locale via sa classe
-| pour éviter toute collision avec la fonction PHP setlocale().
-| Le segment {lang?} accepte fr ou en. Sans segment, on retombe sur la locale
-| par défaut (config('app.locale')) via le middleware.
-|
-| Option : si tu veux forcer une redirection / -> /fr, dé-commente la route
-| de redirection plus bas.
-*/
+Route::get('/', fn() => redirect(app()->getLocale()));
+Route::get('/{locale}', function (string $locale) {
+    app()->setLocale($locale);
+    return view('home');
+})->name('home');
 
-// (Optionnel) Redirection racine vers /fr
-// Route::get('/', fn () => redirect('/fr'));
+Route::group(['prefix' => '{locale}', 'where' => ['locale' => 'fr|en']], function () {
 
-Route::group([
-    'prefix'     => '{lang?}',
-    'where'      => ['lang' => 'fr|en'],
-    'middleware' => [SetLocale::class],
-], function () {
-
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-
-    // Pages statiques / process / about
     Route::view('/a-propos', 'pages.about')->name('about');
-    Route::get('/processus', [PageController::class, 'process'])->name('process');
+    Route::view('/process', 'pages.process')->name('process');
+    Route::view('/faq', 'pages.faq')->name('faq.index');
+
+    Route::view('/contact', 'pages.contact')->name('contact.create');
+    Route::post('/contact', fn() => back()->with('status','Message envoyé'))->name('contact.store');
+
+    Route::view('/devis', 'pages.quote')->name('quote.create');
+    Route::post('/devis', fn() => back()->with('status','Demande envoyée'))->name('quote.store');
 
     // Services
-    Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
-    Route::get('/services/{slug}', [ServiceController::class, 'show'])->name('services.show');
+    Route::get('/services', function ($locale) {
+        app()->setLocale($locale);
+        return view('services.index', ['services'=>['Conseil','Développement','Architecture']]);
+    })->name('services.index');
 
-    // Projets
-    Route::get('/projets', [ProjectController::class, 'index'])->name('projects.index');
-    Route::get('/projets/{slug}', [ProjectController::class, 'show'])->name('projects.show');
+    Route::get('/services/{slug}', function ($locale, $slug) {
+        app()->setLocale($locale);
+        return view('services.show', ['slug'=>$slug, 'service'=>['name'=>ucfirst(str_replace('-',' ',$slug))]]);
+    })->name('services.show');
 
-    // FAQ
-    Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
+    // Projects
+    Route::get('/projets', function ($locale) {
+        app()->setLocale($locale);
+        return view('projects.index');
+    })->name('projects.index');
+
+    Route::get('/projets/{slug}', function ($locale, $slug) {
+        app()->setLocale($locale);
+        return view('projects.show', ['slug'=>$slug]);
+    })->name('projects.show');
 
     // Blog
-    Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
-    Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+    Route::get('/blog', function ($locale) {
+        app()->setLocale($locale);
+        return view('blog.index');
+    })->name('blog.index');
 
-    // Devis
-    Route::get('/devis', [QuoteController::class, 'create'])->name('quote.create');
-    Route::post('/devis', [QuoteController::class, 'store'])->name('quote.store');
+    Route::get('/blog/{slug}', function ($locale, $slug) {
+        app()->setLocale($locale);
+        return view('blog.show', ['slug'=>$slug]);
+    })->name('blog.show');
 
-    // Contact
-    Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
-    Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
-});
-
-/*
-|--------------------------------------------------------------------------
-| Zone Admin (protégée)
-|--------------------------------------------------------------------------
-*/
-Route::middleware(['auth', 'role:admin'])->group(function () {
+    // Admin (placeholder)
     Route::view('/admin', 'admin.dashboard')->name('admin.dashboard');
 });

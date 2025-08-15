@@ -1,24 +1,31 @@
 @php
-    $baseTitle = 'Des services Premium, notre standard pour vous.';
-    $brand = 'D-HARVEST';
-    $fullTitle = ($title ?? $baseTitle).' | '.$brand;
-    $metaDesc = $description
-        ?? 'D-HARVEST : développement web & mobile sur mesure, maintenance, refonte, conseil technique. Des services Premium, notre standard pour vous.';
+    $appName = config('app.name', 'D-HARVEST');
+    $pageTitle = ($title ?? null)
+        ? $title . ' | ' . $appName
+        : $appName;
+    $desc = $description
+        ?? 'Nous accompagnons les entreprises dans la conception, le développement et l’évolution de solutions logicielles sur mesure.';
 @endphp
-<title>{{ $fullTitle }}</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="{{ $metaDesc }}">
-<link rel="canonical" href="{{ url()->current() }}">
+<title>{{ $pageTitle }}</title>
+<meta name="description" content="{{ $desc }}">
+
+<link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+<link rel="alternate" hreflang="fr" href="{{ url('fr') }}">
+<link rel="alternate" hreflang="en" href="{{ url('en') }}">
+
 <meta property="og:type" content="website">
-<meta property="og:title" content="{{ $fullTitle }}">
-<meta property="og:description" content="{{ $metaDesc }}">
+<meta property="og:title" content="{{ $pageTitle }}">
+<meta property="og:description" content="{{ $desc }}">
 <meta property="og:url" content="{{ url()->current() }}">
-<meta property="og:site_name" content="D-HARVEST">
+<meta property="og:site_name" content="{{ $appName }}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="csrf-token" content="{{ csrf_token() }}">
-@if(!empty($structured ?? null))
-<script type="application/ld+json">
-{!! json_encode($structured, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES) !!}
-</script>
+<meta name="twitter:title" content="{{ $pageTitle }}">
+<meta name="twitter:description" content="{{ $desc }}">
+
+@if(!empty($structured))
+    <script type="application/ld+json">
+        {!! json_encode($structured, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT) !!}
+    </script>
 @endif

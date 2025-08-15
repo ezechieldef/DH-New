@@ -1,0 +1,59 @@
+/* On crée les animations personnalisées */
+@layer utilities {
+
+    /* Animation qui monte et descend */
+    @keyframes upDown {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+
+    /* Animation qui descend et remonte */
+    @keyframes downUp {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(20px);
+        }
+    }
+
+    /* Classes utilitaires pour les appliquer */
+    .animate-up-down {
+        animation: upDown 2s ease-in-out infinite;
+    }
+
+    .animate-down-up {
+        animation: downUp 2s ease-in-out infinite;
+    }
+
+    /* Classes utilitaires pour gérer le delay si tu veux */
+    .delay-0 {
+        animation-delay: 0s;
+    }
+
+    .delay-1 {
+        animation-delay: 2s;
+    }
+
+    .delay-2 {
+        animation-delay: 3s;
+    }
+
+    .delay-3 {
+        animation-delay: 4s;
+    }
+
+    .delay-4 {
+        animation-delay: 5s;
+    }
+}
