@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="{{ str_replace('_','-',app()->getLocale()) }}">
 <head>
     @include('layouts.partials.meta', [
-        'title' => $title ?? 'Développement & Solutions Numériques Sur Mesure | Ton Entreprise',
-        'description' => $description ?? 'Conception et développement d’applications web & mobile, maintenance, refonte et accompagnement technique.'
+        'title' => $title ?? null,
+        'description' => $description ?? null,
+        'structured' => $structured ?? null,
     ])
-    @vite(['resources/css/app.css','resources/js/app.js'])
+    <link rel="stylesheet" href="{{ asset('build/assets/app.css') }}">
 </head>
-<body class="antialiased text-slate-800 bg-white">
+<body class="antialiased bg-slate-50 text-slate-800">
     @include('layouts.partials.header')
-    <main>
-        {{ $slot ?? '' }}
+
+    <main class="min-h-[60vh]">
+        @include('layouts.partials.flash')
         @yield('content')
     </main>
+
     @include('layouts.partials.footer')
-    @include('layouts.partials.cta-banner')
+
+    <script src="{{ asset('build/assets/app.js') }}" defer></script>
 </body>
 </html>
