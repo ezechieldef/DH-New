@@ -2,8 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
-    HomeController, PageController, ServiceController, ProjectController,
-    BlogController, FaqController, QuoteController, ContactController
+    HomeController,
+    PageController,
+    ServiceController,
+    ProjectController,
+    BlogController,
+    FaqController,
+    QuoteController,
+    ContactController
 };
 
 /*
@@ -46,6 +52,6 @@ Route::group([
 | Zone Admin (protégée - rôle admin)
 |--------------------------------------------------------------------------
 */
-Route::middleware(['auth','role:admin'])->group(function () {
+Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::view('/admin', 'admin.dashboard')->name('admin.dashboard');
 });
