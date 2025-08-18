@@ -29,11 +29,11 @@
 
     /* Classes utilitaires pour les appliquer */
     .animate-up-down {
-        animation: upDown 2s ease-in-out infinite;
+        animation: upDown 3s ease-in-out infinite;
     }
 
     .animate-down-up {
-        animation: downUp 2s ease-in-out infinite;
+        animation: downUp 4s ease-in-out infinite;
     }
 
     /* Classes utilitaires pour gérer le delay si tu veux */

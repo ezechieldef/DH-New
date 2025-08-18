@@ -94,7 +94,7 @@
                         D-HARVEST • Software Excellence
                     </div>
                     <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 leading-tight">
-                        Des services Premium,<br class="hidden md:block"> notre standard pour vous.
+                        Demander un devis,<br class="hidden md:block"> Parlez-nous de votre projet.
                     </h1>
                     <p class="mt-6 text-lg text-slate-600 max-w-xl leading-relaxed">
                         Conception et développement d'applications web & mobile sur mesure. Fiabilité, performance et

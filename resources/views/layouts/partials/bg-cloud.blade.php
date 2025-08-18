@@ -40,6 +40,6 @@
 <div class="bg-cloud">
     <img src="{{ asset('images/cloud3.webp') }}" style="max-height: 250px;"
         class=" opacity-80 absolute bottom-[0] left-[-10%] " alt="">
-    <img src="{{ asset('images/cloud1.webp') }}" style="max-height: 250px;" class="absolute top-[-5%] right-0 opacity-60"
-        alt="">
+    <img src="{{ asset('images/cloud1.webp') }}" style="max-height: 250px;"
+        class="absolute top-[-5%] right-[5%] opacity-60" alt="">
 </div>
