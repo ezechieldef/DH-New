@@ -14,21 +14,26 @@ Route::group(['prefix' => '{locale}', 'where' => ['locale' => 'fr|en']], functio
     Route::view('/process', 'pages.process')->name('process');
     Route::view('/faq', 'pages.faq')->name('faq.index');
 
-    Route::view('/contact', 'pages.contact')->name('contact.create');
-    Route::post('/contact', fn() => back()->with('status','Message envoyé'))->name('contact.store');
+    Route::get('/contact', function ($locale) {
+        app()->setLocale($locale);
+        return view('pages.contact', [
+            'services' => ['Conseil', 'Développement', 'Architecture', 'Audit', 'UX/UI', 'Support']
+        ]);
+    })->name('contact.create');
+    Route::post('/contact', fn() => back()->with('status', 'Message envoyé'))->name('contact.store');
 
     Route::view('/devis', 'pages.quote')->name('quote.create');
-    Route::post('/devis', fn() => back()->with('status','Demande envoyée'))->name('quote.store');
+    Route::post('/devis', fn() => back()->with('status', 'Demande envoyée'))->name('quote.store');
 
     // Services
     Route::get('/services', function ($locale) {
         app()->setLocale($locale);
-        return view('services.index', ['services'=>['Conseil','Développement','Architecture']]);
+        return view('services.index', ['services' => ['Conseil', 'Développement', 'Architecture']]);
     })->name('services.index');
 
     Route::get('/services/{slug}', function ($locale, $slug) {
         app()->setLocale($locale);
-        return view('services.show', ['slug'=>$slug, 'service'=>['name'=>ucfirst(str_replace('-',' ',$slug))]]);
+        return view('services.show', ['slug' => $slug, 'service' => ['name' => ucfirst(str_replace('-', ' ', $slug))]]);
     })->name('services.show');
 
     // Projects
@@ -39,7 +44,7 @@ Route::group(['prefix' => '{locale}', 'where' => ['locale' => 'fr|en']], functio
 
     Route::get('/projets/{slug}', function ($locale, $slug) {
         app()->setLocale($locale);
-        return view('projects.show', ['slug'=>$slug]);
+        return view('projects.show', ['slug' => $slug]);
     })->name('projects.show');
 
     // Blog
@@ -50,7 +55,7 @@ Route::group(['prefix' => '{locale}', 'where' => ['locale' => 'fr|en']], functio
 
     Route::get('/blog/{slug}', function ($locale, $slug) {
         app()->setLocale($locale);
-        return view('blog.show', ['slug'=>$slug]);
+        return view('blog.show', ['slug' => $slug]);
     })->name('blog.show');
 
     // Admin (placeholder)

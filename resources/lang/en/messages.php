@@ -77,6 +77,13 @@ return [
         ],
         'contact' => [
             'title' => 'Contact',
+            'hero_title' => 'Start Your Project',
+            'hero_subtitle' => 'Share your needs and get a reply within 24h.',
+            'form_intro' => 'Describe your project, goals, constraints and desired timeline.',
+            'reply_24h' => 'Reply within 24h',
+            'project_description' => 'Describe your project',
+            'service' => 'Desired service',
+            'legal' => 'By submitting this form you agree to be contacted by our team. Your data is never sold.',
         ],
         'quote' => [
             'title' => 'Quote request',
@@ -105,6 +112,8 @@ return [
         'choose' => 'Select…',
         'details' => 'Details',
         'request_quote' => 'Submit request',
+        'service' => 'Service',
+        'project_description' => 'Project description',
     ],
     'blog' => [
         'read_time' => ':minutes min read',

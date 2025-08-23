@@ -16,10 +16,17 @@
 </head>
 
 <body class="antialiased bg-slate-50 text-slate-800 font-sans selection:bg-brand-600/90 selection:text-white">
-    @include('layouts.partials.bg-cloud')
+    @if ($bgCloud ?? false)
+        @include('layouts.partials.bg-cloud')
+    @else
+        @include('layouts.partials.motif-header')
+    @endif
+
     @include('layouts.partials.header')
 
+
     <main class="min-h-[100vh]">
+
         @include('layouts.partials.flash')
         @yield('content')
     </main>

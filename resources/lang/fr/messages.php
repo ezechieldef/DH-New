@@ -77,6 +77,13 @@ return [
         ],
         'contact' => [
             'title' => 'Contact',
+            'hero_title' => "Démarrons votre projet",
+            'hero_subtitle' => 'Partagez vos besoins et obtenez une réponse sous 24h.',
+            'form_intro' => 'Décrivez votre projet, vos objectifs, contraintes et délais souhaités.',
+            'reply_24h' => 'Réponse sous 24h',
+            'project_description' => 'Décrivez votre projet',
+            'service' => 'Service souhaité',
+            'legal' => "En soumettant ce formulaire vous acceptez d'être contacté par notre équipe. Vos données ne sont jamais revendues.",
         ],
         'quote' => [
             'title' => 'Demande de devis',
@@ -105,6 +112,8 @@ return [
         'choose' => 'Sélectionnez…',
         'details' => 'Détails',
         'request_quote' => 'Envoyer la demande',
+        'service' => 'Service',
+        'project_description' => 'Description du projet',
     ],
     'blog' => [
         'read_time' => ':minutes min de lecture',

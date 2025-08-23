@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['bgCloud' => true])
 
 @section('content')
     <section class="relative overflow-hidden">
@@ -94,48 +94,50 @@
                         D-HARVEST • Software Excellence
                     </div>
                     <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 leading-tight">
-                        Demander un devis,<br class="hidden md:block"> Parlez-nous de votre projet.
+                        Ingénierie logicielle<br class="hidden md:block"> Parlez-nous de votre projet.
                     </h1>
                     <p class="mt-6 text-lg text-slate-600 max-w-xl leading-relaxed">
-                        Conception et développement d'applications web & mobile sur mesure. Fiabilité, performance et
-                        évolutivité pour accélérer votre croissance.
+                        <strong> D-HARVEST</strong> est une agence web au Bénin spécialisée dans la création d’applications
+                        mobiles, de sites web et de solutions digitales sur mesure. Grâce à notre expertise, nous vous
+                        accompagnons dans la digitalisation de votre activité et l’optimisation de votre présence en ligne.
                     </p>
+                    <ul class="flex flex-col pt-2 gap-y-2 font-semibold">
+                        <li> <span class="text-orange-500 font-semibold mx-2"> ✓</span> Création d’applications sur mesure
+                            et
+                            performantes</li>
+                        <li> <span class="text-orange-500 font-semibold mx-2"> ✓</span> Boostez votre business avec un site
+                            web optimisé SEO
+                        </li>
+                        <li> <span class="text-orange-500 font-semibold mx-2"> ✓</span> Des solutions digitales adaptées à
+                            tous vos besoins</li>
+                        <li> <span class="text-orange-500 font-semibold mx-2"> ✓</span> Une équipe d’experts pour
+                            concrétiser vos projets</li>
+                        <li> <span class="text-orange-500 font-semibold mx-2"> ✓</span> Support client réactif et disponible
+                            5j/7</li>
+                    </ul>
                     <div class="mt-10 flex flex-wrap gap-4">
                         <a href="{{ route('quote.create', app()->getLocale()) }}"
-                            class="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-brand-600 text-white font-medium shadow-soft hover:bg-brand-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500 transition">
+                            class="inline-flex items-center gap-2 px-7 py-3 rounded-lg bg-brand-600 text-white font-medium shadow-soft hover:bg-brand-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500 transition">
                             <span>{{ __('messages.cta.get_quote') }}</span>
                         </a>
                         <a href="{{ route('services.index', app()->getLocale()) }}"
-                            class="inline-flex items-center gap-2 px-7 py-3 rounded-full border border-slate-300/70 bg-white/70 backdrop-blur text-slate-700 font-medium hover:border-brand-300 hover:text-brand-700 transition">
+                            class="inline-flex items-center gap-2 px-7 py-3 rounded-lg border border-slate-300/70 bg-white/70 backdrop-blur text-slate-700 font-medium hover:border-brand-300 hover:text-brand-700 transition">
                             {{ __('messages.cta.discover_services') }} →
                         </a>
                     </div>
-                    <div class="mt-12 grid grid-cols-3 gap-8 max-w-lg text-sm">
-                        <div class="space-y-1">
-                            <p class="text-3xl font-semibold tracking-tight text-slate-900">5+<span
-                                    class="text-brand-600">ans</span></p>
-                            <p class="text-xs uppercase tracking-wide text-slate-500">Expérience</p>
-                        </div>
-                        <div class="space-y-1">
-                            <p class="text-3xl font-semibold tracking-tight text-slate-900">100+<span
-                                    class="text-brand-600">+</span></p>
-                            <p class="text-xs uppercase tracking-wide text-slate-500">Livrables</p>
-                        </div>
-                        <div class="space-y-1">
-                            <p class="text-3xl font-semibold tracking-tight text-slate-900">100%<span
-                                    class="text-brand-600">+</span></p>
-                            <p class="text-xs uppercase tracking-wide text-slate-500">Qualité</p>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="relative">
                     <div class="relative rounded-3xl border border-slate-200/70 bg-white/60 backdrop-blur shadow-soft p-6">
                         <div
                             class="aspect-[4/3] rounded-2xl bg-grid-soft bg-[size:36px_36px] relative overflow-hidden flex items-center justify-center text-slate-500 font-medium">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-br from-brand-100/60 via-transparent to-accent-100/60 mix-blend-multiply">
+                            <div class="absolute inset-0 bg-gradient-to-br from-brand-100/60 via-transparent to-accent-100/60 mix-blend-multiply"
+                                style="background-image: url('{{ asset('images/equipe.webp') }}');
+                                background-size: cover;
+                                background-position: center;">
                             </div>
-                            <span class="relative">(Visuel / Illustration)</span>
+                            {{-- <img src="{{ asset('images/equipe.webp') }}" alt=""> --}}
+                            {{-- <span class="relative">(Visuel / Illustration)</span> --}}
                         </div>
                         <div class="mt-6 grid grid-cols-2 gap-4 text-xs text-slate-600">
                             <div class="rounded-xl border border-slate-200/80 bg-white/70 p-4 backdrop-blur">
@@ -162,7 +164,7 @@
     </section>
 
 
-    <section class="py-12 md:py-20 border-t bg-white">
+    {{-- <section class="py-12 md:py-20 border-t bg-white">
         <div class="max-w-7xl mx-auto px-4 md:px-6">
             <h2 class="text-sm font-medium tracking-wide text-slate-500 uppercase mb-6">Partenaires & Références</h2>
             <div class="grid grid-cols-2 md:grid-cols-6 gap-6 md:gap-10 items-center opacity-70">
@@ -173,89 +175,12 @@
                 @endforeach
             </div>
         </div>
-    </section>
+    </section> --}}
 
-    <section class="py-20 bg-gradient-to-b from-white to-slate-50/60">
-        <div class="max-w-7xl mx-auto px-4 md:px-6">
-            <div class="flex items-end justify-between mb-12 gap-8">
-                <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-slate-900">
-                    {{ __('messages.sections.services') }}</h2>
-                <a href="{{ route('services.index', app()->getLocale()) }}"
-                    class="hidden md:inline-flex items-center gap-2 text-sm font-medium text-brand-700 hover:text-brand-600">Tout
-                    voir →</a>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                @foreach (['Conseil & Audit', 'Développement sur mesure', 'Maintenance & Évolution'] as $service)
-                    <div
-                        class="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white/70 backdrop-blur p-6 hover:border-brand-300 hover:shadow-soft transition flex flex-col">
-                        <div
-                            class="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-gradient-to-br from-brand-200 to-brand-100 opacity-0 group-hover:opacity-100 blur-xl transition">
-                        </div>
-                        <h3 class="font-semibold text-slate-800 mb-3 group-hover:text-brand-700 transition">
-                            {{ $service }}</h3>
-                        <p class="text-sm text-slate-600 flex-1 leading-relaxed">
-                            {{ __('messages.placeholder.lorem_short') }}</p>
-                        <a href="{{ route('services.show', [app()->getLocale(), 'slug' => Str::slug($service)]) }}"
-                            class="mt-5 inline-flex items-center gap-2 text-sm font-medium text-brand-700 group-hover:underline">{{ __('messages.actions.learn_more') }}
-                            →</a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
+    @include('sections.services')
 
-    <section class="py-20">
-        <div class="max-w-7xl mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-16 items-center">
-            <div class="order-2 md:order-1">
-                <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-slate-900 mb-6">Méthode pragmatique &
-                    collaborative</h2>
-                <ol class="space-y-5 text-sm">
-                    @foreach ([['Discovery', 'Analyse & cadrage initial'], ['Design', 'UX/UI & architecture'], ['Build', 'Développement itératif'], ['Qualité', 'Tests & revues'], ['Delivery', 'Mise en production'], ['Améliorations', 'Cycle continu']] as $i => $step)
-                        <li class="relative pl-10">
-                            <span
-                                class="absolute left-0 top-0 h-7 w-7 rounded-full bg-gradient-to-br from-brand-500 to-brand-600 text-white text-xs font-semibold flex items-center justify-center shadow-soft">{{ $i + 1 }}</span>
-                            <p class="font-medium text-slate-800">{{ $step[0] }}</p>
-                            <p class="text-slate-500 mt-0.5">{{ $step[1] }}</p>
-                        </li>
-                    @endforeach
-                </ol>
-            </div>
-            <div class="order-1 md:order-2 relative">
-                <div class="rounded-3xl border border-slate-200 bg-white/60 backdrop-blur p-8 shadow-soft">
-                    <p class="text-lg leading-relaxed text-slate-600">"Notre approche s'appuie sur une communication
-                        continue, des cycles courts et une exigence forte de qualité afin de livrer rapidement de la valeur
-                        mesurable."</p>
-                    <div class="mt-6 flex items-center gap-3">
-                        <div
-                            class="h-10 w-10 rounded-full bg-gradient-to-br from-brand-500 to-brand-600 text-white flex items-center justify-center font-semibold">
-                            D</div>
-                        <div class="text-sm">
-                            <p class="font-medium text-slate-800">D-HARVEST</p>
-                            <p class="text-slate-500">Equipe</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="py-20">
-        <div class="max-w-4xl mx-auto px-4 md:px-6 text-center">
-            <div
-                class="relative rounded-3xl border border-slate-200 bg-gradient-to-br from-brand-600 to-brand-500 text-white p-12 md:p-16 overflow-hidden shadow-soft">
-                <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_30%_30%,white,transparent_60%)]">
-                </div>
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-6">Prêt à accélérer votre produit ?</h2>
-                <p class="text-base md:text-lg text-white/90 max-w-2xl mx-auto leading-relaxed">Discutons de vos objectifs
-                    et identifions ensemble les leviers techniques qui créeront le plus de valeur.</p>
-                <div class="mt-10 flex flex-wrap justify-center gap-4">
-                    <a href="{{ route('quote.create', app()->getLocale()) }}"
-                        class="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-white text-brand-700 font-medium shadow-soft hover:bg-white/90 transition">{{ __('messages.cta.get_quote') }}</a>
-                    <a href="{{ route('contact.create', app()->getLocale()) }}"
-                        class="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-white/40 text-white font-medium hover:bg-white/10 transition">{{ __('messages.nav.contact') }}
-                        →</a>
-                </div>
-            </div>
-        </div>
-    </section>
+
+    @include('sections.cta-demander-devis')
+    @include('sections.contact')
 @endsection
